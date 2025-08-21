@@ -1,5 +1,5 @@
 # MCP Weather Web
 
-Página web para copiar el comando de instalación del servidor MCP Weather.
+Web page to copy the installation command for the MCP Weather server.
 
-Ver el repositorio principal: [mcp-wheather](https://github.com/zkjon/mcp-wheather) para más información.
+See the main repository: [mcp-wheather](https://github.com/zkjon/mcp-wheather) for more information.
