@@ -3,14 +3,234 @@
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Clone MCP Weather Server</title>
+    <script
+      src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"
+    ></script>
+  </head>
+  <body>
+    <main class="container">
+      <div class="content">
+        <h1 class="title">zkjon MCP Weather Server</h1>
+        <p class="subtitle">
+          Get started with the weather MCP server for your AI applications
+        </p>
+
+        <div class="clone-box">
+          <input
+            type="text"
+            value="git clone https://github.com/zkjon/mcp-wheather.git"
+            readonly
+            class="clone-input"
+            id="cloneCommand"
+          />
+          <button class="copy-btn" onclick="copyToClipboard()">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+              ></path>
+            </svg>
+          </button>
+        </div>
+
+        <div class="links">
+          <a
+            href="https://github.com/zkjon/mcp-wheather"
+            target="_blank"
+            class="link">
+            View on GitHub
+          </a>
+          <a
+            href="https://github.com/zkjon/mcp-wheather#readme"
+            target="_blank"
+            class="link">
+            Documentation
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <script is:inline>
+      function copyToClipboard() {
+        const input = document.getElementById("cloneCommand");
+        input.select();
+        input.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(input.value);
+
+        const button = document.querySelector(".copy-btn");
+        const originalContent = button.innerHTML;
+        button.innerHTML = "✓";
+        button.style.color = "#ffffff";
+
+        // Trigger confetti
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 },
+        });
+
+        setTimeout(() => {
+          button.innerHTML = originalContent;
+          button.style.color = "";
+        }, 2000);
+      }
+    </script>
+  </body>
 </html>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+      "Oxygen", "Ubuntu", "Cantarell", sans-serif;
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+  }
+
+  .content {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 48px 32px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  .title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    color: #a0a0a0;
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+
+  .clone-box {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+    padding: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+  }
+
+  .clone-input {
+    flex: 1;
+    padding: 16px 20px;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-family: "Monaco", "Menlo", "Ubuntu Mono", monospace;
+    outline: none;
+    border-radius: 8px;
+  }
+
+  .clone-input::selection {
+    background: rgba(128, 128, 128, 0.3);
+  }
+
+  .copy-btn {
+    padding: 16px;
+    background: rgba(128, 128, 128, 0.1);
+    border: 1px solid rgba(128, 128, 128, 0.2);
+    border-radius: 8px;
+    color: #808080;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .copy-btn:hover {
+    background: rgba(128, 128, 128, 0.2);
+    border-color: rgba(128, 128, 128, 0.4);
+    transform: translateY(-1px);
+  }
+
+  .copy-btn:active {
+    transform: translateY(0);
+  }
+
+  .links {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .link {
+    color: #a0a0a0;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+  }
+
+  .link:hover {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  @media (max-width: 640px) {
+    .title {
+      font-size: 2rem;
+    }
+
+    .content {
+      padding: 32px 24px;
+    }
+
+    .clone-box {
+      flex-direction: column;
+    }
+
+    .copy-btn {
+      width: 100%;
+    }
+
+    .links {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+</style>
